@@ -1,1 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FunGames - Play 100+ Free Online Games</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #1e293b;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #334155;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #38bdf8;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-bar {
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            border: 1px solid #475569;
+            background-color: #0f172a;
+            color: #fff;
+            width: 300px;
+            outline: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            flex: 1;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #f1f5f9;
+        }
+
+        .hero p {
+            color: #94a3b8;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .game-card {
+            background-color: #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            border: 1px solid #334155;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+            border-color: #38bdf8;
+        }
+
+        .game-thumb {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            background-color: #334155;
+        }
+
+        .game-info {
+            padding: 1rem;
+        }
+
+        .game-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .game-tag {
+            font-size: 0.8rem;
+            color: #38bdf8;
+            background-color: rgba(56, 189, 248, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        footer {
+            background-color: #1e293b;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            border-top: 1px solid #334155;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">🎮 FunGames</a>
+        <input type="text" class="search-bar" placeholder="Search 100+ games...">
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Welcome to FunGames</h1>
+            <p>Play the best free online games directly in your browser!</p>
+        </div>
+
+        <div class="games-grid" id="gamesGrid">
+            <!-- המשחקים ייטענו לכאן אוטומטית -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 FunGames. All rights reserved. Powered by GitHub Pages.</p>
+    </footer>
+
+    <script>
+        // רשימת דוגמה למשחקים - ניתן להוסיף כאן עוד עשרות משחקים
+        const games = [
+            { title: "Retro Arcade", tag: "Classic", img: "https://via.placeholder.com/300x200/10b981/ffffff?text=Retro+Arcade", url: "#" },
+            { title: "Speed Racer 3D", tag: "Racing", img: "https://via.placeholder.com/300x200/ef4444/ffffff?text=Speed+Racer", url: "#" },
+            { title: "Pixel Runner", tag: "Action", img: "https://via.placeholder.com/300x200/3b82f6/ffffff?text=Pixel+Runner", url: "#" },
+            { title: "Space Shooter", tag: "New", img: "https://via.placeholder.com/300x200/8b5cf6/ffffff?text=Space+Shooter", url: "#" },
+            { title: "Puzzle Master", tag: "Puzzle", img: "https://via.placeholder.com/300x200/f59e0b/ffffff?text=Puzzle+Master", url: "#" },
+            { title: "Zombie Survival", tag: "New", img: "https://via.placeholder.com/300x200/06b6d4/ffffff?text=Zombie+Survival", url: "#" }
+        ];
+
+        const grid = document.getElementById('gamesGrid');
+
+        // ייצור הכרטיסיות
+        games.forEach(game => {
+            const card = document.createElement('a');
+            card.className = 'game-card';
+            card.href = game.url;
+            card.innerHTML = `
+                <img src="${game.img}" class="game-thumb" alt="${game.title}">
+                <div class="game-info">
+                    <div class="game-title">${game.title}</div>
+                    <span class="game-tag">${game.tag}</span>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>
